@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  .form.registry-form
+    form(href = '/registry', method = 'post')
+      if req.param('redirect')
+        input(type = 'hidden', name = 'redirect', value = req.param('redirect'))
+      != form.toHTML()
+      div
+        input(type = 'submit', value = '注册')
+        a(href = url('/login')) 登录
